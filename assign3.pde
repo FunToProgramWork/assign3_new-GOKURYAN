@@ -35,14 +35,14 @@ PImage hogLImg;
 PImage soldierImg;
 PImage cabImg;
 
-// For debug function; DO NOT edit or remove this!
+
 int playerHealth = 0;
 float cameraOffsetY = 0;
 boolean debug = false;
 
 void setup() {
   size(640, 480, P2D);
-  // Enter your setup code here (please put loadImage() here or your game will lag like crazy)
+  // Enter your setup code here 
   bg = loadImage("img/bg.jpg");
   title = loadImage("img/title.jpg");
   gameover = loadImage("img/gameover.jpg");
@@ -71,18 +71,12 @@ void setup() {
 }
 
 void draw() {
-    /* ------ Debug Function ------ 
-
-      Please DO NOT edit the code here.
-      It's for reviewing other requirements when you fail to complete the camera moving requirement.
-
-    */
+    
     if (debug) {
       pushMatrix();
       translate(0, cameraOffsetY);
     }
-    /* ------ End of Debug Function ------ */
-
+    
     
   switch (gameState) {
 
@@ -114,7 +108,7 @@ void draw() {
         playerHealth=2;
         
         // hog pos
-        hogX=4*BLOCK;
+        hogX=3*BLOCK;
         hogY=BLOCK;
         
         //hog stat
@@ -150,7 +144,7 @@ void draw() {
     noStroke();
     rect(0, 160 - GRASSHEIGHT, width, GRASSHEIGHT);//Grass
 
-    // Soil - REPLACE THIS PART WITH YOUR LOOP CODE!
+    //the soils can go straight down 
     
     for(int i=0;i<8;i++){
       for(int j=0;j<24;j++){
@@ -225,12 +219,12 @@ void draw() {
         break;
     }
     
-    //Roll soil pos
+    //Roll soil 
     if(offsetY>-20*BLOCK){
       offsetY=BLOCK-hogY;
     }
 
-    //check timer
+    
     if(timer==15){
       hogStat=HOGIDLE;
       if(hogY%BLOCK<10){
@@ -253,7 +247,7 @@ void draw() {
     soldierX+=3;//Move Soldier
     soldierX%=720;
     
-    // Cab
+    
     if(cabStat){
       image(cabImg,cabX,cabY);
     
@@ -285,7 +279,7 @@ void draw() {
     popMatrix();
     
     
-    // hp
+    // hp seat
 
     for(int i=0;i<playerHealth;i++)
     {
